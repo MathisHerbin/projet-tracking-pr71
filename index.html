@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W7SF3DMM');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site de Test GTM</title>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+    </script>
+
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        header { background: #2c3e50; color: #fff; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: #fff; margin-right: 15px; text-decoration: none; font-weight: bold; }
+        main { padding: 2rem; max-width: 800px; margin: auto; height: 1200px; /* Hauteur forcée pour le test de scroll */ }
+        .article-card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .btn-affiliation { display: inline-block; background: #f39c12; color: #fff; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 10px; }
+        footer { background: #ecf0f1; padding: 2rem; text-align: center; margin-top: 40px; }
+        input[type="text"], input[type="email"] { padding: 8px; width: 200px; }
+        button { padding: 8px 15px; background: #3498db; color: white; border: none; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7SF3DMM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header>
+        <nav>
+            <a href="#">Tech</a>
+            <a href="#">Sciences</a>
+            <a href="#">Vroom</a>
+        </nav>
+        <form id="search-form" onsubmit="trackSearch(event)">
+            <input type="text" id="search-input" placeholder="Rechercher sur le site...">
+            <button type="submit">Chercher</button>
+        </form>
+    </header>
+
+    <main>
+        <h1>Test du Plan de Taggage</h1>
+        <p>Cette page contient les éléments nécessaires pour tester les événements définis dans votre tableau Excel.</p>
+        
+        <div class="article-card">
+            <h2>Guide d'achat : Les meilleurs smartphones</h2>
+            <p>Voici notre sélection des téléphones au meilleur rapport qualité/prix cette année.</p>
+            <a href="https://www.amazon.fr/test-produit" class="btn-affiliation" target="_blank">Voir le prix sur Amazon</a>
+        </div>
+
+        <p style="margin-top: 50px; color: #7f8c8d;"><i>(Faites défiler la page vers le bas pour simuler la lecture d'un article)</i></p>
+    </main>
+
+    <footer>
+        <h3>Ne manquez aucune actualité</h3>
+        <p>Inscrivez-vous à notre newsletter quotidienne.</p>
+        <form id="newsletter-form" onsubmit="trackNewsletter(event)">
+            <input type="email" placeholder="votre@email.com" required>
+            <button type="submit">S'abonner</button>
+        </form>
+    </footer>
+
+    <script>
+        // Événement : Recherche
+        function trackSearch(event) {
+            event.preventDefault(); 
+            var motCle = document.getElementById('search-input').value;
+            window.dataLayer.push({
+                'event': 'search_perform',
+                'search_term': motCle
+            });
+            alert('Donnée envoyée au DataLayer : Recherche pour "' + motCle + '"');
+        }
+
+        // Événement : Newsletter
+        function trackNewsletter(event) {
+            event.preventDefault(); 
+            window.dataLayer.push({
+                'event': 'generate_lead',
+                'form_location': 'footer'
+            });
+            alert('Donnée envoyée au DataLayer : generate_lead');
+        }
+    </script>
+</body>
+</html>

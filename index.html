@@ -17,15 +17,38 @@
     </script>
 
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f8f9fb; color: #1f2933; }
         header { background: #2c3e50; color: #fff; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
         nav a { color: #fff; margin-right: 15px; text-decoration: none; font-weight: bold; }
-        main { padding: 2rem; max-width: 800px; margin: auto; height: 1200px; /* Hauteur forcée pour le test de scroll */ }
+        main { padding: 2rem; max-width: 1100px; margin: auto; min-height: 1200px; }
         .article-card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-top: 20px; }
         .btn-affiliation { display: inline-block; background: #f39c12; color: #fff; padding: 10px 15px; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 10px; }
         footer { background: #ecf0f1; padding: 2rem; text-align: center; margin-top: 40px; }
         input[type="text"], input[type="email"] { padding: 8px; width: 200px; }
         button { padding: 8px 15px; background: #3498db; color: white; border: none; cursor: pointer; font-weight: bold; }
+        .comparison-intro { margin-top: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; }
+        .comparison-title { margin-bottom: 10px; }
+        .phone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px; }
+        .phone-card { background: #ffffff; border: 1px solid #dce3ea; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); }
+        .phone-card h3 { margin-top: 0; margin-bottom: 8px; }
+        .badge { display: inline-block; font-size: 12px; font-weight: bold; padding: 4px 8px; border-radius: 999px; margin-bottom: 10px; }
+        .badge-premium { background: #fef3c7; color: #92400e; }
+        .badge-photo { background: #dbeafe; color: #1e40af; }
+        .badge-autonomie { background: #dcfce7; color: #166534; }
+        .price { font-size: 20px; font-weight: bold; margin: 10px 0; }
+        .spec-list { list-style: none; padding: 0; margin: 0; }
+        .spec-list li { padding: 6px 0; border-bottom: 1px solid #eef2f6; font-size: 14px; }
+        .spec-list li:last-child { border-bottom: none; }
+        .comparison-table-wrapper { margin-top: 24px; overflow-x: auto; }
+        .comparison-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #dce3ea; border-radius: 12px; overflow: hidden; }
+        .comparison-table th, .comparison-table td { border-bottom: 1px solid #e5e7eb; padding: 12px; text-align: left; font-size: 14px; }
+        .comparison-table thead th { background: #f1f5f9; font-size: 13px; text-transform: uppercase; letter-spacing: 0.03em; }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .highlight { font-weight: bold; color: #0f766e; }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 12px; align-items: flex-start; }
+            input[type="text"], input[type="email"] { width: 100%; max-width: 260px; }
+        }
     </style>
 </head>
 <body>
@@ -37,7 +60,7 @@
         <nav>
             <a href="#">Tech</a>
             <a href="#">Sciences</a>
-            <a href="#">Vroom</a>
+            <a href="#">Voiture</a>
         </nav>
         <form id="search-form" onsubmit="trackSearch(event)">
             <input type="text" id="search-input" placeholder="Rechercher sur le site...">
@@ -46,16 +69,99 @@
     </header>
 
     <main>
-        <h1>Test du Plan de Taggage</h1>
-        <p>Cette page contient les éléments nécessaires pour tester les événements définis dans votre tableau Excel.</p>
-        
-        <div class="article-card">
-            <h2>Guide d'achat : Les meilleurs smartphones</h2>
-            <p>Voici notre sélection des téléphones au meilleur rapport qualité/prix cette année.</p>
-            <a href="https://www.amazon.fr/test-produit" class="btn-affiliation" target="_blank">Voir le prix sur Amazon</a>
+        <h1>Le comparatif des smartphones</h1>
+
+        <div class="comparison-intro">
+            <h2 class="comparison-title">Guide d'achat 2026 : trouvez le bon modèle selon votre usage</h2>
+            <p>Ce comparatif met en face les smartphones les plus demandés, avec des critères concrets : photo, autonomie, puissance, écran et prix.</p>
+            <p><strong>Conseil rapide :</strong> si vous jouez beaucoup, priorisez la puce + le taux de rafraichissement. Si vous filmez souvent, regardez surtout le capteur principal et la stabilisation vidéo.</p>
         </div>
 
-        <p style="margin-top: 50px; color: #7f8c8d;"><i>(Faites défiler la page vers le bas pour simuler la lecture d'un article)</i></p>
+        <div class="phone-grid">
+            <article class="phone-card">
+                <span class="badge badge-premium">Premium</span>
+                <h3>iPhone 17 Pro</h3>
+                <p class="price">A partir de 1 099 EUR</p>
+                <ul class="spec-list">
+                    <li><strong>Ecran :</strong> 6,1" OLED 120 Hz</li>
+                    <li><strong>Photo :</strong> 48 MP + teleobjectif x3</li>
+                    <li><strong>Batterie :</strong> environ 23 h video</li>
+                    <li><strong>Points forts :</strong> video, finition, performances</li>
+                </ul>
+                <a href="https://www.amazon.fr/test-produit" class="btn-affiliation" target="_blank">Voir le prix</a>
+            </article>
+
+            <article class="phone-card">
+                <span class="badge badge-photo">Photo</span>
+                <h3>Google Pixel 8 Pro</h3>
+                <p class="price">A partir de 899 EUR</p>
+                <ul class="spec-list">
+                    <li><strong>Ecran :</strong> 6,7" OLED 120 Hz</li>
+                    <li><strong>Photo :</strong> 50 MP + ultra grand-angle 48 MP</li>
+                    <li><strong>Batterie :</strong> environ 30 h en usage mixte</li>
+                    <li><strong>Points forts :</strong> photo de nuit, IA, ergonomie Android</li>
+                </ul>
+                <a href="https://www.amazon.fr/test-produit" class="btn-affiliation" target="_blank">Voir le prix</a>
+            </article>
+
+            <article class="phone-card">
+                <span class="badge badge-autonomie">Autonomie</span>
+                <h3>Samsung Galaxy S26 Ultra</h3>
+                <p class="price">A partir de 1 049 EUR</p>
+                <ul class="spec-list">
+                    <li><strong>Ecran :</strong> 6,7" AMOLED 120 Hz</li>
+                    <li><strong>Photo :</strong> 50 MP + teleobjectif x3</li>
+                    <li><strong>Batterie :</strong> 4 900 mAh (charge rapide 45 W)</li>
+                    <li><strong>Points forts :</strong> autonomie, ecran, polyvalence</li>
+                </ul>
+                <a href="https://www.amazon.fr/test-produit" class="btn-affiliation" target="_blank">Voir le prix</a>
+            </article>
+        </div>
+
+        <div class="comparison-table-wrapper">
+            <table class="comparison-table" aria-label="Tableau comparatif des smartphones">
+                <thead>
+                    <tr>
+                        <th>Critere</th>
+                        <th>iPhone 15 Pro</th>
+                        <th>Pixel 8 Pro</th>
+                        <th>Galaxy S24+</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prix moyen</td>
+                        <td>1 099 EUR</td>
+                        <td class="highlight">899 EUR</td>
+                        <td>1 049 EUR</td>
+                    </tr>
+                    <tr>
+                        <td>Photo de jour</td>
+                        <td>9/10</td>
+                        <td class="highlight">9,5/10</td>
+                        <td>8,8/10</td>
+                    </tr>
+                    <tr>
+                        <td>Video</td>
+                        <td class="highlight">9,5/10</td>
+                        <td>8,8/10</td>
+                        <td>8,7/10</td>
+                    </tr>
+                    <tr>
+                        <td>Autonomie</td>
+                        <td>8,7/10</td>
+                        <td>9/10</td>
+                        <td class="highlight">9,2/10</td>
+                    </tr>
+                    <tr>
+                        <td>Recommandation</td>
+                        <td>Pour les fans iOS et createurs video</td>
+                        <td>Pour la meilleure photo au meilleur prix</td>
+                        <td>Pour un usage intensif toute la journee</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
 
     <footer>
